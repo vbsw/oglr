@@ -30,6 +30,17 @@ func Init() error {
 	return err
 }
 
+// WGLFunctions returns pointer to wglChoosePixelFormatARB and wglCreateContextAttribsARB.
+// Call Init first before calling this function.
+func WGLFunctions() (unsafe.Pointer, unsafe.Pointer) {
+	if initialized {
+		var cpf, cca unsafe.Pointer
+		C.oglr_wgl_ctx_functions(&cpf, &cca)
+		return cpf, cca
+	}
+	panic(notInitialized)
+}
+
 // toError converts C error to Go error.
 func toError(errC unsafe.Pointer) error {
 	if errC != nil {

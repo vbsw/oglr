@@ -8,6 +8,10 @@
 // Package oglr draws graphics using OpenGL.
 package oglr
 
+const (
+	notInitialized = "renderer not initialized"
+)
+
 var (
 	initialized bool
 )

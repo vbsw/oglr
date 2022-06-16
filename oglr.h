@@ -11,6 +11,7 @@ extern void oglr_error(void *err, int *err_num, oglr_ul_t *err_win32, char **err
 extern void oglr_error_free(void *data);
 extern void oglr_init(void **err);
 extern void oglr_free(void *data);
+extern void oglr_wgl_ctx_functions(void **cpf, void **cca);
 #elif defined(OGLR_X)
 #endif
 

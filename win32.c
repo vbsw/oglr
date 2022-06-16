@@ -20,6 +20,7 @@ typedef BOOL(WINAPI * PFNWGLCHOOSEPIXELFORMATARBPROC) (HDC hdc, const int *piAtt
 typedef HGLRC(WINAPI * PFNWGLCREATECONTEXTATTRIBSARBPROC) (HDC hDC, HGLRC hShareContext, const int *attribList);
 typedef BOOL(WINAPI * PFNWGLSWAPINTERVALEXTPROC) (int interval);
 typedef int (WINAPI * PFNWGLGETSWAPINTERVALEXTPROC) (void);
+
 // from glcorearb.h
 typedef char GLchar;
 typedef ptrdiff_t GLsizeiptr;
@@ -55,57 +56,62 @@ typedef void (APIENTRY *PFNGLUNIFORMMATRIX2X3FVPROC) (GLint location, GLsizei co
 typedef void (APIENTRY *PFNGLACTIVETEXTUREPROC) (GLenum texture);
 typedef void (APIENTRY *PFNGLGENERATEMIPMAPPROC) (GLenum target);
 
-static PFNWGLCHOOSEPIXELFORMATARBPROC    wglChoosePixelFormatARB    = NULL;
-static PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB = NULL;
-static PFNWGLSWAPINTERVALEXTPROC         wglSwapIntervalEXT         = NULL;
-static PFNWGLGETSWAPINTERVALEXTPROC      wglGetSwapIntervalEXT      = NULL;
-
-static PFNGLCREATESHADERPROC            glCreateShader            = NULL;
-static PFNGLSHADERSOURCEPROC            glShaderSource            = NULL;
-static PFNGLCOMPILESHADERPROC           glCompileShader           = NULL;
-static PFNGLGETSHADERIVPROC             glGetShaderiv             = NULL;
-static PFNGLGETSHADERINFOLOGPROC        glGetShaderInfoLog        = NULL;
-static PFNGLCREATEPROGRAMPROC           glCreateProgram           = NULL;
-static PFNGLATTACHSHADERPROC            glAttachShader            = NULL;
-static PFNGLLINKPROGRAMPROC             glLinkProgram             = NULL;
-static PFNGLVALIDATEPROGRAMPROC         glValidateProgram         = NULL;
-static PFNGLGETPROGRAMIVPROC            glGetProgramiv            = NULL;
-static PFNGLGETPROGRAMINFOLOGPROC       glGetProgramInfoLog       = NULL;
-static PFNGLGENBUFFERSPROC              glGenBuffers              = NULL;
-static PFNGLGENVERTEXARRAYSPROC         glGenVertexArrays         = NULL;
-static PFNGLGETATTRIBLOCATIONPROC       glGetAttribLocation       = NULL;
-static PFNGLBINDVERTEXARRAYPROC         glBindVertexArray         = NULL;
-static PFNGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray = NULL;
-static PFNGLVERTEXATTRIBPOINTERPROC     glVertexAttribPointer     = NULL;
-static PFNGLBINDBUFFERPROC              glBindBuffer              = NULL;
-static PFNGLBUFFERDATAPROC              glBufferData              = NULL;
-static PFNGLGETVERTEXATTRIBPOINTERVPROC glGetVertexAttribPointerv = NULL;
-static PFNGLUSEPROGRAMPROC              glUseProgram              = NULL;
-static PFNGLDELETEVERTEXARRAYSPROC      glDeleteVertexArrays      = NULL;
-static PFNGLDELETEBUFFERSPROC           glDeleteBuffers           = NULL;
-static PFNGLDELETEPROGRAMPROC           glDeleteProgram           = NULL;
-static PFNGLDELETESHADERPROC            glDeleteShader            = NULL;
-static PFNGLGETUNIFORMLOCATIONPROC      glGetUniformLocation      = NULL;
-static PFNGLUNIFORMMATRIX4FVPROC        glUniformMatrix4fv        = NULL;
-static PFNGLUNIFORMMATRIX3FVPROC        glUniformMatrix3fv        = NULL;
-static PFNGLUNIFORMMATRIX2X3FVPROC      glUniformMatrix2x3fv      = NULL;
-static PFNGLGENERATEMIPMAPPROC          glGenerateMipmap          = NULL;
-static PFNGLACTIVETEXTUREPROC           glActiveTexture           = NULL;
-
 typedef struct {
 	int err_num;
 	oglr_ul_t err_win32;
 	char *err_str;
 } error_t;
 
+static PFNWGLCHOOSEPIXELFORMATARBPROC    wglChoosePixelFormatARB    = NULL;
+static PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB = NULL;
+static PFNWGLSWAPINTERVALEXTPROC         wglSwapIntervalEXT         = NULL;
+static PFNWGLGETSWAPINTERVALEXTPROC      wglGetSwapIntervalEXT      = NULL;
+
+static PFNGLCREATESHADERPROC             glCreateShader             = NULL;
+static PFNGLSHADERSOURCEPROC             glShaderSource             = NULL;
+static PFNGLCOMPILESHADERPROC            glCompileShader            = NULL;
+static PFNGLGETSHADERIVPROC              glGetShaderiv              = NULL;
+static PFNGLGETSHADERINFOLOGPROC         glGetShaderInfoLog         = NULL;
+static PFNGLCREATEPROGRAMPROC            glCreateProgram            = NULL;
+static PFNGLATTACHSHADERPROC             glAttachShader             = NULL;
+static PFNGLLINKPROGRAMPROC              glLinkProgram              = NULL;
+static PFNGLVALIDATEPROGRAMPROC          glValidateProgram          = NULL;
+static PFNGLGETPROGRAMIVPROC             glGetProgramiv             = NULL;
+static PFNGLGETPROGRAMINFOLOGPROC        glGetProgramInfoLog        = NULL;
+static PFNGLGENBUFFERSPROC               glGenBuffers               = NULL;
+static PFNGLGENVERTEXARRAYSPROC          glGenVertexArrays          = NULL;
+static PFNGLGETATTRIBLOCATIONPROC        glGetAttribLocation        = NULL;
+static PFNGLBINDVERTEXARRAYPROC          glBindVertexArray          = NULL;
+static PFNGLENABLEVERTEXATTRIBARRAYPROC  glEnableVertexAttribArray  = NULL;
+static PFNGLVERTEXATTRIBPOINTERPROC      glVertexAttribPointer      = NULL;
+static PFNGLBINDBUFFERPROC               glBindBuffer               = NULL;
+static PFNGLBUFFERDATAPROC               glBufferData               = NULL;
+static PFNGLGETVERTEXATTRIBPOINTERVPROC  glGetVertexAttribPointerv  = NULL;
+static PFNGLUSEPROGRAMPROC               glUseProgram               = NULL;
+static PFNGLDELETEVERTEXARRAYSPROC       glDeleteVertexArrays       = NULL;
+static PFNGLDELETEBUFFERSPROC            glDeleteBuffers            = NULL;
+static PFNGLDELETEPROGRAMPROC            glDeleteProgram            = NULL;
+static PFNGLDELETESHADERPROC             glDeleteShader             = NULL;
+static PFNGLGETUNIFORMLOCATIONPROC       glGetUniformLocation       = NULL;
+static PFNGLUNIFORMMATRIX4FVPROC         glUniformMatrix4fv         = NULL;
+static PFNGLUNIFORMMATRIX3FVPROC         glUniformMatrix3fv         = NULL;
+static PFNGLUNIFORMMATRIX2X3FVPROC       glUniformMatrix2x3fv       = NULL;
+static PFNGLGENERATEMIPMAPPROC           glGenerateMipmap           = NULL;
+static PFNGLACTIVETEXTUREPROC            glActiveTexture            = NULL;
+
 static error_t err_no_mem = {1, ERROR_SUCCESS, NULL};
 
 static void *error_new(const int err_num, const DWORD err_win32, char *const err_str) {
 	error_t *const err = (error_t*)malloc(sizeof(error_t));
-	err->err_num = err_num;
-	err->err_win32 = (oglr_ul_t)err_win32;
-	err->err_str = err_str;
-	return err;
+	if (err) {
+		err->err_num = err_num;
+		err->err_win32 = (oglr_ul_t)err_win32;
+		err->err_str = err_str;
+		return (void*)err;
+	}
+	if (err_str)
+		free(err_str);
+	return (void*)&err_no_mem;
 }
 
 static PROC get_proc(LPCSTR const func_name, void **const err) {
@@ -122,7 +128,7 @@ static PROC get_proc(LPCSTR const func_name, void **const err) {
 				memcpy(err_str, func_name, length0);
 				err[0] = error_new(2, err_win32, err_str);
 			} else {
-				err[0] = (void*)&err_no_mem;
+				err[0] = error_new(1, ERROR_SUCCESS, NULL);
 			}
 		}
 	}
@@ -194,6 +200,11 @@ void oglr_error_free(void *const data) {
 	}
 	if (err != &err_no_mem)
 		free(data);
+}
+
+void oglr_wgl_ctx_functions(void **const cpf, void **const cca) {
+	cpf[0] = (void*)wglChoosePixelFormatARB;
+	cca[0] = (void*)wglCreateContextAttribsARB;
 }
 
 /* #if defined(_OGLWIN_WIN32) */
